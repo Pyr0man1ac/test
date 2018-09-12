@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>我是测试</h1>
+    <!-- <script src="../js/test.js"></script> -->
+    <div id="app-1">
+        <h2>{{msg}}</h2>
+    </div>
+    <script>
+        var app1 = new Vue({
+            el: '#app-1',
+            data: {
+                msg: 'HELL NO',
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-2">
+        <input type="text" v-model="msg" placeholder="Enter something please...">
+        <button @click="reverseText">反转信息</button>
+        <h1>message is : {{msg}}</h1>
+    </div>
+    <script>
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                msg: '',
+            },
+            methods: {
+                reverseText: function () {
+                    this.msg = this.msg.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-3">
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <br>
+        <button @click="reverseText">反转信息</button>
+        <br>
+        <span>Multiline message is:</span>
+        <p style="white-space: pre-line;">{{ message }}</p>
+    </div>
+    <script>
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                message: '',
+            },
+            methods: {
+                reverseText: function () {
+                    this.message = this.message.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-4">
+        <ul>
+            <li v-for="i in items">{{i.msg}}</li>
+        </ul>
+        <ul>
+            <li v-for="i in items">{{i.message}}</li>
+        </ul>
+        <ul>
+            <li v-for="(i,index) in items">
+                {{headMessage}}{{index}}--{{i.anotherMessage}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="n of nums" v-if="odd(n)">{{n}}</li>
+        </ul>
+    </div>
+    <script>
+        var app4 = new Vue({
+            el: "#app-4",
+            data: {
+                headMessage: 'We have another message:',
+                items: [
+                    { msg: 'a1', message: 'b1', anotherMessage: "c1" },
+                    { msg: 'a2', message: 'b2', anotherMessage: "c2" },
+                    { msg: 'a3', message: 'b3', anotherMessage: "c3" },
+                ],
+                nums: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            },
+            methods: {
+                odd: function (num) {
+                    if (num % 2 === 0) {
+                        return false;
+                    } else if (num % 2 === 1) {
+                        return true;
+                    }
+                }
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-5">
+        <!-- 单个checkbox的value似乎没什么用...v-model绑定的是布尔值 -->
+        <input type="checkbox" id="singleCheck" value="123" v-model="checked">
+        <label for="singleCheck">I'm a checkbox : {{checked}}</label>
+        <br>
+        <!-- 多组checkbox实际上是把选中项的value里的值放到了v-model指定的数组里 -->
+        <input type="checkbox" id="a1" value="aaa" v-model="checkedNames">
+        <label for="a1">A</label>
+        <input type="checkbox" id="b1" value="bbb" v-model="checkedNames">
+        <label for="b1">B</label>
+        <input type="checkbox" id="c1" value="ccc" v-model="checkedNames">
+        <label for="c1">C</label>
+        <br>
+        <span>Checked Names : {{checkedNames}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: "#app-5",
+            data: {
+                checked: true,
+                checkedNames: [],
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-6">
+        <!-- 将value的值放到v-model指定的字符串里 -->
+        <input type="radio" id="r1" value="One" v-model="picked">
+        <label for="r1">111</label>
+        <input type="radio" id="r2" value="Two" v-model="picked">
+        <label for="r2">222</label>
+        <br>
+        <span>Picked : {{picked}}</span>
+    </div>
+    <script>
+        new Vue({
+            el: "#app-6",
+            data: {
+                picked: '',
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-7">
+        <!-- 单项选择 -->
+        <select name="singleSelect" id="select1" v-model="selected">
+            <option disabled value="">请选择</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+        </select>
+        <br> <span>Selected : {{selected}}</span>
+        <h1>----------------------------------------------</h1>
+        <!-- 多项选择 -->
+        <select name="multipleSelect" id="selectn" multiple style="width:50px;" v-model="m-selected">
+            <option disabled value="">请选择</option>
+            <option value="">A</option>
+            <option value="">B</option>
+            <option value="">C</option>
+        </select>
+        <br> <span>M-selected : {{m-selected}}</span>
+        </select>
+        <h1>----------------------------------------------</h1>
+        <!-- for循环选择 -->
+        <select v-model="for-selected">
+            <option v-for="option in options" :value="option.value">
+                {{option.text}}
+            </option>
+        </select>
+        <br> <span>For-selected : {{for-selected}}</span>
+    </div>
+    <script>
+        new vue({
+            el: "#app-7",
+            data: {
+                selected: '',
+                'm-selected': [],
+                'for-selected': '',
+                options: [
+                    { text: 'One', value: 'A', },
+                    { text: 'Two', value: 'B', },
+                    { text: 'Three', value: 'C', },
+                ],
+            },
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="app-8">
+        <input type="checkbox" id="checkToggle" v-model="toggle" true-value="yes" false-value="No">
+        <label for="checkToggle">Toggle</label>
+        <br> <span>Check Toggle : {{toggle}}</span>
+    </div>
+    <script>
+        new Vue({
+            el:"#app-8",
+            data:{
+                toggle:'yes'
+            }
+        })
+    </script>
+    <hr><!-- ----------------------------------------------------------------------------------------------- -->
+</body>
+
+</html>

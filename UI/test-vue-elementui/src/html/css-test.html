@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            -webkit-box-sizing: border-boxd;
+            -moz-box-sizing: border-box;
+            box-sizing: boder-box;
+        }
+
+        #div-1 {
+            max-width: 650px;
+            margin: 0 auto;
+            /* border-width: 10px;
+            border-color: black; */
+            background-color: blueviolet;
+            padding: 1em;
+        }
+
+
+        .static {
+            position: static;
+            background-color: pink;
+            padding: 1em;
+            width: 700px;
+            height: 50px;
+        }
+
+        .relative {
+            position: relative;
+            background-color: lightgreen;
+            max-width: 550px;
+            padding: 1em;
+            height: 300px;
+            top: -25px;
+            right: -50px;
+        }
+
+        .fixed {
+            position: fixed;
+            background-color: red;
+            padding: 1em;
+            bottom: 0;
+            left: 0;
+        }
+
+        .absolute {
+            position: absolute;
+            background-color: aqua;
+            max-width: 70%;
+            padding: 1em;
+            height: 150px;
+            right: 0;
+            bottom: 0;
+        }
+
+        #column-3 {
+            column-count: 3;
+            column-gap: 1em;
+            -moz-column-count: 3;
+            -moz-column-gap: 1em;
+            -webkit-column-count: 3;
+            -webkit-column-gap: 1em;
+            max-width: 65%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            padding: 1em;
+            background-color: rgb(40, 187, 236);
+        }
+    </style>
+    <div class="static">
+        <p>默认值static : 不会被特殊定位,不会被"positioned"</p>
+    </div>
+    <div class="relative">
+        <p>相对定位relative : 设置 top 、 right 、 bottom 和 left 属性会使其偏离其正常位置,其他的元素的位置则不会受该元素的影响发生位置改变来弥补它偏离后剩下的空隙</p>
+        <div class="absolute">
+            <p>绝对定位absolute : 相对于最近的"positioned"祖先元素定位,如果没有"positioned"祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动</p>
+        </div>
+    </div>
+    <div class="fixed">
+        <p>固定定位fixed : 会相对于视窗定位</p>
+    </div>
+    <div id="column-3">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+        lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget,
+        auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu,
+        lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum
+        nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec
+        vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh
+        tempor porta. Cras ac leo purus. Mauris quis diam velit.
+    </div>
+    <div id="div-1">
+        <h1>1</h1>
+        <p>H1ContentBy p</p>
+        <p>H1ContentBy p</p>
+        <p>H1ContentBy p</p>
+        <span>H1ContentBy span</span>
+        <span>H1ContentBy span</span>
+        <span>H1ContentBy span</span>
+        <hr>
+        <h1>2</h1>
+        <p>H2ContentBy p</p>
+        <p>H2ContentBy p</p>
+        <p>H2ContentBy p</p>
+        <a href="">H2ContentBy a </a>
+        <a href="">H2ContentBy a </a>
+        <a href="">H2ContentBy a </a>
+        <hr>
+        <h1>3</h1>
+        <p>H3ContentBy p</p>
+        <p>H3ContentBy p</p>
+        <p>H3ContentBy p</p>
+        <hr>
+    </div>
+</body>
+
+</html>
