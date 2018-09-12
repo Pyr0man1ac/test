@@ -14,11 +14,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path:'/hp',
-      name:'HomePage',
-      component:HomePage
-    },
+    // {
+    //   path:'/hp',
+    //   name:'HomePage',
+    //   component:HomePage
+    // },
     
     {
       path: '/',
