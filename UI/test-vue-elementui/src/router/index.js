@@ -9,23 +9,24 @@ import User from '../components/User'
 import Radio from '../components/TestRadio'
 import Check from '../components/TestCheckBox'
 import Doc from '../components/VueDoc'
+import HomePage from '../components/HomePage'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path:'/hp',
-    //   name:'HomePage',
-    //   component:HomePage
-    // },
+    {
+      path:'/',
+      name:'HomePage',
+      component:HomePage
+    },
     
     {
-      path: '/',
+      path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
     },
-
+    
     {
       path:'/doc',
       name:'Doc',
